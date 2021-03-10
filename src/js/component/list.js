@@ -24,11 +24,13 @@ export function List() {
 			</div>
 			<div className="container d-flex justify-content-center">
 				<div className="row">
-					<div className="col">
-						<ul className="list-group">
+					<div className="col-12">
+						<ul className="list-group list-group-flush">
 							{todos.map((item, index) => {
 								return (
-									<li key={index} className="list-group-item">
+									<li
+										key={index}
+										className="list-group-item list-group-item-primary">
 										{item}
 									</li>
 								);
