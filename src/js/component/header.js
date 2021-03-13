@@ -6,7 +6,6 @@ export function Header() {
 			<h1>
 				To do list <i className="fas fa-pencil-alt fa-xs"></i>
 			</h1>
-			<spam></spam>
 		</div>
 	);
 }

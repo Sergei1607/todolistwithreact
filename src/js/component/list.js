@@ -4,18 +4,17 @@ export function List() {
 	const [todo, setTodo] = useState("");
 	const [todos, setTodos] = useState([]);
 	const [number, setNumber] = useState(0);
-	const [icon, setIcon] = useState("false");
+	const [activeIndex, setActiveIndex] = useState(null);
 	const [notodo, setNotodo] = useState(
 		<li className="list-group-item">No todos, add a todo.</li>
 	);
 
-	function DisplayIcon() {
-		setIcon("fas fa-times-circle fa-sm");
-	}
+	let activeIcon = { display: "block" };
+	let deactiveIcon = { display: "none" };
 
-	function HideIcon() {
-		setIcon("false");
-	}
+	const handleover = e => {
+		setActiveIndex(e);
+	};
 
 	function addtodo() {
 		if (todo == "") {
@@ -58,12 +57,18 @@ export function List() {
 									<li
 										key={index}
 										className="list-group-item"
-										onMouseEnter={DisplayIcon}
-										onMouseLeave={HideIcon}>
+										onMouseEnter={() => handleover(index)}
+										onMouseLeave={() => setActiveIndex("")}
+										name={index}>
 										{item}
 										<i
+											style={
+												activeIndex === index
+													? activeIcon
+													: deactiveIcon
+											}
 											id="delete"
-											className={icon}
+											className="fas fa-times-circle fa-sm"
 											onClick={function() {
 												todos.splice(index, 1);
 												setNumber(number - 1);
